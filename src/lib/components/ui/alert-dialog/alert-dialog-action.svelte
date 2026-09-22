@@ -26,7 +26,7 @@
 <AlertDialogPrimitive.Action
 	bind:ref
 	data-slot="alert-dialog-action"
-	class={cn(buttonVariants({ variant, size }), 'cn-alert-dialog-action', className)}
+	class={cn(buttonVariants({ variant, size }), '', className)}
 	{...restProps}
 >
 	{#if loading}
