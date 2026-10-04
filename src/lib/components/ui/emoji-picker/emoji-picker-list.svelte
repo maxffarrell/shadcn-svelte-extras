@@ -24,7 +24,7 @@
 			if (entries[0]?.isIntersecting) pickerState.showMore();
 		});
 		observer.observe(node);
-		return () => observer.disconnect();
+		return { destroy: () => observer.disconnect() };
 	}
 </script>
 
@@ -81,6 +81,6 @@
 		</CommandPrimitive.Group>
 	{/each}
 	{#if pickerState.visibleGroups.remaining > 0}
-		<div {@attach loadMore} class="h-px w-full" aria-hidden="true"></div>
+		<div use:loadMore class="h-px w-full" aria-hidden="true"></div>
 	{/if}
 </Command.List>
