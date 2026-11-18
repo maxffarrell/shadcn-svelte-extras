@@ -17,7 +17,8 @@
 		"registry:dev": "jsrepo build --watch",
 		"ci:release": "jsrepo publish && changeset tag",
 		"generate-i18n": "pnpm paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide",
-		"pre:build": "pnpm sync && pnpm registry:build"
+		"pre:build": "pnpm sync && pnpm registry:build",
+		"test:security": "node --test scripts/dependency-security.test.mjs"
 	},
 	"devDependencies": {
 		"@changesets/cli": "latest",
@@ -104,7 +105,10 @@
 		"onlyBuiltDependencies": [
 			"@tailwindcss/oxide",
 			"esbuild"
-		]
+		],
+		"overrides": {
+			"ts-deepmerge@<8.0.0": "8.0.0"
+		}
 	},
 	"dependencies": {
 		"@svitejs/changesets-changelog-github-compact": "^1.2.0"
